@@ -1,7 +1,13 @@
 import React from "react";
 import "./Sidebar.css";
 
-const Sidebar = ({ onAddNote, notes, onDeleteNote, activeNote }) => {
+const Sidebar = ({
+  onAddNote,
+  notes,
+  onDeleteNote,
+  activeNote,
+  setActiveNote,
+}) => {
   return (
     <div className="app-sidebar">
       <div className="app-sidebar-header">
