@@ -6,6 +6,7 @@ import uuid from "react-uuid";
 
 function App() {
   const [notes, setNotes] = useState([]);
+  const [activeNote, setActiveNote] = useState(false);
 
   const onAddNote = () => {
     console.log("ボタンがクリックされました");
@@ -24,6 +25,22 @@ function App() {
     setNotes(filterNotes);
   };
 
+  const getActiveNote = () => {
+    return notes.find((note) => note.id === activeNote);
+  };
+
+  const onUpdateNote = (updatedNote) => {
+    /*修正された新しいノートの配列を返す */
+    const updatedNotesArray = notes.map((note) => {
+      if (note.id === updatedNote.id) {
+        return updatedNote;
+      } else {
+        return note;
+      }
+    });
+    setNotes(updatedNotesArray);
+  };
+
   return (
     <>
       <div className="App">
@@ -31,8 +48,9 @@ function App() {
           onAddNote={onAddNote}
           notes={notes}
           onDeleteNote={onDeleteNote}
+          setActiveNote={setActiveNote}
         />
-        <Main />
+        <Main activeNote={getActiveNote()} onUpdateNote={onUpdateNote} />
       </div>
     </>
   );
