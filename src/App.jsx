@@ -8,7 +8,6 @@ function App() {
     <>
       <div className="App">
         <Sidebar />
-        <h1>あ</h1>
         <Main />
       </div>
     </>
